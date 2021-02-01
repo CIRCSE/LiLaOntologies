@@ -1,0 +1,278 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#"
+     xml:base="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+    <owl:Ontology rdf:about="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#">
+        <owl:versionIRI rdf:resource="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl/0.0.1"/>
+        <owl:imports rdf:resource="http://purl.org/olia/olia.owl"/>
+        <rdfs:comment>An extension of the olia.owl ontology to include some concepts useful for Latin annotated corpora.
+
+The extensions relate to:
+- Residual PoS: the class now includes words that are illegible due to philological problems
+- Gerundive as Non-finite verbal form
+- Distributive numeral as types of Numerals</rdfs:comment>
+        <owl:versionInfo>TO DO:
+- &quot;Verb Type&quot; feature still to be figured out
+- &quot;Deponent&quot;, &quot;Semi-dep&quot;, &quot;Active&quot; and &quot;Passive&quot; in paritcular: although these categories are represented in the &quot;VoiceFeature&quot;, it&apos;s not of &quot;voice feature&quot; of a specific annotated verb we talk about; it&apos;s the property of a lemma to be e.g. &quot;semi-deponent&quot;</owl:versionInfo>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#Conjugation -->
+
+    <owl:Class rdf:about="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#Conjugation">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#InflectionTypeFeature"/>
+        <rdfs:label>Latin verb conjugation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#CorrelativePronoun -->
+
+    <owl:Class rdf:about="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#CorrelativePronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Pronoun"/>
+        <rdfs:comment>Generic class, used by some grammars, that encompasses both demonstrative and relative pronouns used correlatively.
+
+Used as a value of &quot;Pronoun Type&quot; by CompHistSem</rdfs:comment>
+        <rdfs:label>Correlative pronoun</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#Declension -->
+
+    <owl:Class rdf:about="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#Declension">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia-top.owl#InflectionTypeFeature"/>
+        <rdfs:label>Latin Declension</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#DistributiveNumeral -->
+
+    <owl:Class rdf:about="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#DistributiveNumeral">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Numeral"/>
+        <rdfs:label>Distributive numeral</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#FifthDeclension -->
+
+    <owl:Class rdf:about="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#FifthDeclension">
+        <rdfs:subClassOf rdf:resource="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#Declension"/>
+        <rdfs:label>Fifth declension</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#FirstConjugation -->
+
+    <owl:Class rdf:about="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#FirstConjugation">
+        <rdfs:subClassOf rdf:resource="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#Conjugation"/>
+        <rdfs:label>First conjugation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#FirstDeclension -->
+
+    <owl:Class rdf:about="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#FirstDeclension">
+        <rdfs:subClassOf rdf:resource="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#Declension"/>
+        <rdfs:label>First declension</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#FourthConjugation -->
+
+    <owl:Class rdf:about="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#FourthConjugation">
+        <rdfs:subClassOf rdf:resource="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#Conjugation"/>
+        <rdfs:label>Fourth conjugation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#FourthDeclension -->
+
+    <owl:Class rdf:about="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#FourthDeclension">
+        <rdfs:subClassOf rdf:resource="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#Declension"/>
+        <rdfs:label>Fourth declension</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#Gerundive -->
+
+    <owl:Class rdf:about="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#Gerundive">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#NonFiniteVerb"/>
+        <rdfs:comment>Latin gerundive. Correspond to VerbType=Gdv of Universal Dependency
+https://universaldependencies.org/u/feat/VerbForm.html#gdv-gerundive</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#IOConjugation -->
+
+    <owl:Class rdf:about="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#IOConjugation">
+        <rdfs:subClassOf rdf:resource="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#Conjugation"/>
+        <rdfs:label>Io conjugation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#Indeclinable -->
+
+    <owl:Class rdf:about="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#Indeclinable">
+        <rdfs:subClassOf rdf:resource="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#Declension"/>
+    </owl:Class>
+    
+
+
+    <!-- http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#Institution -->
+
+    <owl:Class rdf:about="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#Institution">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#ProperNoun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#Irregular -->
+
+    <owl:Class rdf:about="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#Irregular">
+        <rdfs:subClassOf rdf:resource="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#Declension"/>
+    </owl:Class>
+    
+
+
+    <!-- http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#Organization -->
+
+    <owl:Class rdf:about="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#Organization">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#ProperNoun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#People -->
+
+    <owl:Class rdf:about="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#People">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#ProperNoun"/>
+    </owl:Class>
+    
+
+
+    <!-- http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#PersonName -->
+
+    <owl:Class rdf:about="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#PersonName">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#ProperNoun"/>
+        <rdfs:label>Person name</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#PlaceName -->
+
+    <owl:Class rdf:about="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#PlaceName">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#ProperNoun"/>
+        <rdfs:label>Place name</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#SecondConjugation -->
+
+    <owl:Class rdf:about="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#SecondConjugation">
+        <rdfs:subClassOf rdf:resource="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#Conjugation"/>
+        <rdfs:label>Second conjugation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#SecondDeclension -->
+
+    <owl:Class rdf:about="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#SecondDeclension">
+        <rdfs:subClassOf rdf:resource="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#Declension"/>
+        <rdfs:label>Second declension</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#ThirdConjugation -->
+
+    <owl:Class rdf:about="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#ThirdConjugation">
+        <rdfs:subClassOf rdf:resource="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#Conjugation"/>
+        <rdfs:label>Third conjugation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#ThirdDeclension -->
+
+    <owl:Class rdf:about="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#ThirdDeclension">
+        <rdfs:subClassOf rdf:resource="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#Declension"/>
+        <rdfs:label>Third declension</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#unintelligible -->
+
+    <owl:Class rdf:about="http://lila-erc.eu/data/doc/vocabulary/latin-extension.owl#unintelligible">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Residual"/>
+        <rdfs:comment>Any sequence of characters in the annotated documents that cannot be interpreted as a valid or possible linguistical unit. Rather, the form as it stands is the product of some error or damage in the process of the text transmission.
+
+Unintelligible words include scribal errors (that editors cannot emend), lacunae, and any other &quot;vox nihili&quot;</rdfs:comment>
+        <rdfs:label>Unintelligible word</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#InterrogativePronoun -->
+
+    <rdf:Description rdf:about="http://purl.org/olia/olia.owl#InterrogativePronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Pronoun"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.org/olia/olia.owl#RelativePronoun -->
+
+    <rdf:Description rdf:about="http://purl.org/olia/olia.owl#RelativePronoun">
+        <rdfs:subClassOf rdf:resource="http://purl.org/olia/olia.owl#Pronoun"/>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://purl.org/olia/olia.owl#Quantifier">
+        <rdfs:comment>Verbs with 1st person, present indicative in &quot;-io&quot; with infinitive in &quot;-ere&quot;, which presents forms of the Fourth and Third conjugation</rdfs:comment>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.6.2018-09-06T00:27:41Z) https://github.com/owlcs/owlapi -->
+

@@ -1,0 +1,321 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://lila-erc.eu/ontologies/lila_corpora/"
+     xml:base="http://lila-erc.eu/ontologies/lila_corpora/"
+     xmlns:cc="http://web.resource.org/cc/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:frbr="http://purl.org/vocab/frbr/core#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:terms="http://purl.org/dc/terms/">
+    <owl:Ontology rdf:about="http://lila-erc.eu/ontologies/lila_corpora/">
+        <owl:versionIRI rdf:resource="http://lila-erc.eu/ontologies/lila_corpora/0.0.3"/>
+        <owl:imports rdf:resource="http://purl.org/powla/powla.owl"/>
+        <owl:versionInfo>- v. 0.1: first draft
+- v. 0.2: solved problems with node classes
+- v. 0.3: syntactic relation added</owl:versionInfo>
+        <owl:versionInfo>To solve:
+- &quot;citation unit&quot; cannot be a Nonterminal
+- hasDocument cannot linke Terminal and Document</owl:versionInfo>
+        <owl:versionInfo>status: DRAFT</owl:versionInfo>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#definition -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#definition"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#example -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#example"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://lila-erc.eu/ontologies/lila_corpora/first -->
+
+    <owl:ObjectProperty rdf:about="http://lila-erc.eu/ontologies/lila_corpora/first">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:comment>Links the superordinate element of corpus organization to the first element in sequence.
+
+Use it if you need to keep track of the node order between elements of the corpus structure.
+
+Note that nature of the relation between &quot;superordinate&quot; element to the object of &quot;first&quot; property is intentionally left unspecified. It could be direct dominance (as in Nonterminal to a Terminal), or it can be generic inclusion (as between a Terminal and a Document the Terminal is part of).
+
+The specific nature of the hierarchy (if any) must be specified with the appropriate relation, e.g. &quot;hasChild&quot;.
+
+So for instance, the first Terminal of a phrasal Nonterminal could be something like this:
+
+Phrase (Nonterminal) &gt; hasChild, first &gt; First Terminal</rdfs:comment>
+        <rdfs:label>first</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://lila-erc.eu/ontologies/lila_corpora/hasCitStructure -->
+
+    <owl:ObjectProperty rdf:about="http://lila-erc.eu/ontologies/lila_corpora/hasCitStructure">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/powla/powla.owl#hasLayer"/>
+        <rdfs:domain rdf:resource="http://purl.org/powla/powla.owl#Terminal"/>
+        <rdfs:range rdf:resource="http://lila-erc.eu/ontologies/lila_corpora/CitationStructure"/>
+        <rdfs:comment>Used to link a Terminal to a Citation Structure (Document Layer)</rdfs:comment>
+        <rdfs:label>has citation structure</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://lila-erc.eu/ontologies/lila_corpora/hasCitSubUnit -->
+
+    <owl:ObjectProperty rdf:about="http://lila-erc.eu/ontologies/lila_corpora/hasCitSubUnit">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/powla/powla.owl#hasChild"/>
+        <owl:inverseOf rdf:resource="http://lila-erc.eu/ontologies/lila_corpora/isCitSubUnit"/>
+        <rdfs:label>has citation sub-unit</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://lila-erc.eu/ontologies/lila_corpora/hasDep -->
+
+    <owl:ObjectProperty rdf:about="http://lila-erc.eu/ontologies/lila_corpora/hasDep">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/powla/powla.owl#hasTarget"/>
+        <owl:inverseOf rdf:resource="http://lila-erc.eu/ontologies/lila_corpora/isDep"/>
+        <rdfs:domain rdf:resource="http://lila-erc.eu/ontologies/lila_corpora/DependencyRel"/>
+        <rdfs:range rdf:resource="http://purl.org/powla/powla.owl#Terminal"/>
+        <owl:propertyDisjointWith rdf:resource="http://lila-erc.eu/ontologies/lila_corpora/hasHead"/>
+        <rdfs:label>has dependent</rdfs:label>
+        <rdfs:seeAlso>hasHead</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://lila-erc.eu/ontologies/lila_corpora/hasHead -->
+
+    <owl:ObjectProperty rdf:about="http://lila-erc.eu/ontologies/lila_corpora/hasHead">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/powla/powla.owl#hasSource"/>
+        <owl:inverseOf rdf:resource="http://lila-erc.eu/ontologies/lila_corpora/isHead"/>
+        <rdfs:domain rdf:resource="http://lila-erc.eu/ontologies/lila_corpora/DependencyRel"/>
+        <rdfs:range rdf:resource="http://purl.org/powla/powla.owl#Node"/>
+        <rdfs:comment>Property used to link the Head of a Depedency structure to its Dependency Relation.
+
+E.g. in the phrase: &quot;John eats&quot;, the relation between verb and subject is annotated with the dependency relation: eats =&gt; John.
+
+This is expressed with the following triples:
+
+ex:rel1 a :DependencyRel ;
+       :hasHead ex:eats&apos; ;
+       :hasDep ex:John .</rdfs:comment>
+        <rdfs:label>has head</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://lila-erc.eu/ontologies/lila_corpora/isCitSubUnit -->
+
+    <owl:ObjectProperty rdf:about="http://lila-erc.eu/ontologies/lila_corpora/isCitSubUnit">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/powla/powla.owl#hasParent"/>
+        <rdfs:label>is citation sub-unit</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://lila-erc.eu/ontologies/lila_corpora/isDep -->
+
+    <owl:ObjectProperty rdf:about="http://lila-erc.eu/ontologies/lila_corpora/isDep">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/powla/powla.owl#isTargetOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://lila-erc.eu/ontologies/lila_corpora/isHead -->
+
+    <owl:ObjectProperty rdf:about="http://lila-erc.eu/ontologies/lila_corpora/isHead">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/powla/powla.owl#isSourceOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://lila-erc.eu/ontologies/lila_corpora/isLayer -->
+
+    <owl:ObjectProperty rdf:about="http://lila-erc.eu/ontologies/lila_corpora/isLayer">
+        <owl:inverseOf rdf:resource="http://purl.org/powla/powla.owl#hasLayer"/>
+        <rdfs:comment>inverse of hasLayer</rdfs:comment>
+        <rdfs:label>is layer</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://lila-erc.eu/ontologies/lila_corpora/last -->
+
+    <owl:ObjectProperty rdf:about="http://lila-erc.eu/ontologies/lila_corpora/last">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:comment>See &quot;first&quot; for specifications</rdfs:comment>
+        <rdfs:label>last</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/powla/powla.owl#hasLayer -->
+
+    <rdf:Description rdf:about="http://purl.org/powla/powla.owl#hasLayer"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://lila-erc.eu/ontologies/lila_corpora/hasCitLevel -->
+
+    <owl:DatatypeProperty rdf:about="http://lila-erc.eu/ontologies/lila_corpora/hasCitLevel">
+        <rdfs:subPropertyOf rdf:resource="http://lila-erc.eu/ontologies/lila_corpora/reference"/>
+        <rdfs:domain rdf:resource="http://lila-erc.eu/ontologies/lila_corpora/citationUnit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <skos:definition>Property that identify the hierarchical level of a citation unit.</skos:definition>
+        <skos:example>E.g. in: &quot;Verg. Aen. 1.10&quot;, (book) &quot;1&quot; has level=1, (line) &quot;10&quot; has level=2</skos:example>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://lila-erc.eu/ontologies/lila_corpora/hasRefType -->
+
+    <owl:DatatypeProperty rdf:about="http://lila-erc.eu/ontologies/lila_corpora/hasRefType">
+        <rdfs:subPropertyOf rdf:resource="http://lila-erc.eu/ontologies/lila_corpora/reference"/>
+        <skos:definition>Property that provides the human-readable label of the citation level (e.g. &quot;book&quot;@en, &quot;paragraph&quot;@en, or &quot;liber&quot;@lt, &quot;paragraphus&quot;@lt)</skos:definition>
+        <skos:example>E.g. in: &quot;Verg. Aen. 1.10&quot;, (book) &quot;1&quot; has reference type = &apos;book&apos;, (line) &quot;10&quot; has reference type = &apos;line&apos;</skos:example>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://lila-erc.eu/ontologies/lila_corpora/hasRefValue -->
+
+    <owl:DatatypeProperty rdf:about="http://lila-erc.eu/ontologies/lila_corpora/hasRefValue">
+        <rdfs:subPropertyOf rdf:resource="http://lila-erc.eu/ontologies/lila_corpora/reference"/>
+        <skos:definition>The value of the reference of the given type, e.g. (book) 10</skos:definition>
+        <skos:example>E.g. in: &quot;Verg. Aen. 1.10&quot;, (book) &quot;1&quot; has reference value = &apos;1&apos;, (line) &quot;10&quot; has reference value = &apos;10&apos;</skos:example>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://lila-erc.eu/ontologies/lila_corpora/reference -->
+
+    <owl:DatatypeProperty rdf:about="http://lila-erc.eu/ontologies/lila_corpora/reference"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://lila-erc.eu/ontologies/lila_corpora/CitationStructure -->
+
+    <owl:Class rdf:about="http://lila-erc.eu/ontologies/lila_corpora/CitationStructure">
+        <rdfs:subClassOf rdf:resource="http://purl.org/powla/powla.owl#DocumentLayer"/>
+        <rdfs:comment>A document layer that connects all the citation units belonging to a document. It serves as a link between a document and the citation units.
+
+E.g. The Aneid is divided into books, each of which is a Document. The book is linked to the citation layer and this links the citation units representing the lines.
+
+This is a schema of the structure:
+
+Aeneid (Document) &gt; Book 1 (Document) &gt; Cit Structure of Book 1 &gt; Line 1 (Citation Unit) &gt; arma</rdfs:comment>
+        <rdfs:label>Citation Structure</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://lila-erc.eu/ontologies/lila_corpora/DependencyRel -->
+
+    <owl:Class rdf:about="http://lila-erc.eu/ontologies/lila_corpora/DependencyRel">
+        <rdfs:subClassOf rdf:resource="http://purl.org/powla/powla.owl#Relation"/>
+        <rdfs:comment>A relation between two corpus tokens used to annotate the syntax of a sentence according to a dependency formalism</rdfs:comment>
+        <rdfs:label>Dependency relation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://lila-erc.eu/ontologies/lila_corpora/NonPrimaryDep -->
+
+    <owl:Class rdf:about="http://lila-erc.eu/ontologies/lila_corpora/NonPrimaryDep">
+        <rdfs:subClassOf rdf:resource="http://lila-erc.eu/ontologies/lila_corpora/DependencyRel"/>
+        <rdfs:comment>A non-primary dependency relation, such as e.g. Universal Dependency&apos;s Enhanced Depdendencies.
+
+Non-primary deps violate the treeness constraint of dependency graphs, by adding one or more secundary heads to a node.</rdfs:comment>
+        <rdfs:label>Non-primary Dependency Relation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://lila-erc.eu/ontologies/lila_corpora/POSTagging -->
+
+    <owl:Class rdf:about="http://lila-erc.eu/ontologies/lila_corpora/POSTagging">
+        <rdfs:subClassOf rdf:resource="http://purl.org/powla/powla.owl#DocumentLayer"/>
+        <rdfs:label>Part-Of-Speech Tagging</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://lila-erc.eu/ontologies/lila_corpora/SyntacticAnnotation -->
+
+    <owl:Class rdf:about="http://lila-erc.eu/ontologies/lila_corpora/SyntacticAnnotation">
+        <rdfs:subClassOf rdf:resource="http://purl.org/powla/powla.owl#DocumentLayer"/>
+        <rdfs:label>Syntactic annotation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://lila-erc.eu/ontologies/lila_corpora/citationUnit -->
+
+    <owl:Class rdf:about="http://lila-erc.eu/ontologies/lila_corpora/citationUnit">
+        <rdfs:subClassOf rdf:resource="http://purl.org/powla/powla.owl#Nonterminal"/>
+        <rdfs:label>Citation Unit</rdfs:label>
+        <skos:definition>A citation unit is a segment of text of various length that is identified by a canonical citation or a component thereof.</skos:definition>
+        <skos:example>E.g.: in Verg. Aen 1.10 both (book) &quot;1&quot; and (line) &quot;10&quot; are instances of citation units.</skos:example>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.6.2018-09-06T00:27:41Z) https://github.com/owlcs/owlapi -->
+
