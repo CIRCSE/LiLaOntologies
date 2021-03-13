@@ -9,9 +9,10 @@
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:terms="http://purl.org/dc/terms/"
      xmlns:system="http://purl.org/olia/system.owl#">
     <owl:Ontology rdf:about="http://lila-erc.eu/ontologies/lila/">
-        <owl:versionIRI rdf:resource="http://lila-erc.eu/ontologies/lila/0.2"/>
+        <owl:versionIRI rdf:resource="http://lila-erc.eu/ontologies/lila/0.2.1"/>
         <owl:imports rdf:resource="http://purl.org/olia/system.owl"/>
         <owl:imports rdf:resource="http://www.w3.org/ns/lemon/ontolex"/>
         <rdfs:comment>Basic ontology for the Lemma, which includes also the annotation module.
@@ -37,6 +38,8 @@ thus: :adjective a :Adjective and :coordinating_conjunction a :CoordinatingConju
 - &quot;generic&quot; label in conjugations changed to &quot;isolated form&quot;
 - &quot;transitive&quot; label removed from conjugations (e.g. &quot;first conj. transitive verb&quot; &gt; &quot;first conj. verb&quot;)
 - different treatment of Verbs and Aux&apos;s: now UPOS tag VERB are assigned to generic lila-anno:Verb; Aux are a sub class. Subclass of &apos;non auxiliary verb&apos; deleted</owl:versionInfo>
+        <owl:versionInfo>v. 0.2.1:
+- &quot;Uninflected verb&quot; class created as subclass of Verbal Inflection, to be consistend with how uninflected nouns/adjs are treated in the nominal inflection</owl:versionInfo>
         <owl:versionInfo>v. 0.2: annotation and definition modules merged into one namespace and one file</owl:versionInfo>
     </owl:Ontology>
     
@@ -397,8 +400,8 @@ Note that in LiLa we don&apos;t describe the Base, we don&apos;t even attribute 
     <!-- http://lila-erc.eu/ontologies/lila/Comparative -->
 
     <owl:Class rdf:about="http://lila-erc.eu/ontologies/lila/Comparative">
-        <rdfs:label>Comparative</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://lila-erc.eu/ontologies/lila/Degree"/>
+        <rdfs:label>Comparative</rdfs:label>
     </owl:Class>
     
 
@@ -406,8 +409,8 @@ Note that in LiLa we don&apos;t describe the Base, we don&apos;t even attribute 
     <!-- http://lila-erc.eu/ontologies/lila/Conjunction -->
 
     <owl:Class rdf:about="http://lila-erc.eu/ontologies/lila/Conjunction">
-        <rdfs:label>Conjunction</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://lila-erc.eu/ontologies/lila/POS"/>
+        <rdfs:label>Conjunction</rdfs:label>
     </owl:Class>
     
 
@@ -424,8 +427,8 @@ Note that in LiLa we don&apos;t describe the Base, we don&apos;t even attribute 
     <!-- http://lila-erc.eu/ontologies/lila/Degree -->
 
     <owl:Class rdf:about="http://lila-erc.eu/ontologies/lila/Degree">
-        <rdfs:label>Degree</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://lila-erc.eu/ontologies/lila/MorphologicalFeatures"/>
+        <rdfs:label>Degree</rdfs:label>
     </owl:Class>
     
 
@@ -433,8 +436,8 @@ Note that in LiLa we don&apos;t describe the Base, we don&apos;t even attribute 
     <!-- http://lila-erc.eu/ontologies/lila/Determiner -->
 
     <owl:Class rdf:about="http://lila-erc.eu/ontologies/lila/Determiner">
-        <rdfs:label>Determiner</rdfs:label>        
         <rdfs:subClassOf rdf:resource="http://lila-erc.eu/ontologies/lila/POS"/>
+        <rdfs:label>Determiner</rdfs:label>
     </owl:Class>
     
 
@@ -507,8 +510,8 @@ Note that in LiLa we don&apos;t describe the Base, we don&apos;t even attribute 
     <!-- http://lila-erc.eu/ontologies/lila/Gender -->
 
     <owl:Class rdf:about="http://lila-erc.eu/ontologies/lila/Gender">
-        <rdfs:label>Gender</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://lila-erc.eu/ontologies/lila/MorphologicalFeatures"/>
+        <rdfs:label>Gender</rdfs:label>
     </owl:Class>
     
 
@@ -534,8 +537,8 @@ De-adjectival adverbs (e.g. &quot;vehementer&quot;) and participles used adjecti
     <!-- http://lila-erc.eu/ontologies/lila/InflectionType -->
 
     <owl:Class rdf:about="http://lila-erc.eu/ontologies/lila/InflectionType">
-        <rdfs:label>Inflection Type</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#Feature"/>
+        <rdfs:label>Inflection Type</rdfs:label>
     </owl:Class>
     
 
@@ -543,8 +546,8 @@ De-adjectival adverbs (e.g. &quot;vehementer&quot;) and participles used adjecti
     <!-- http://lila-erc.eu/ontologies/lila/Interjection -->
 
     <owl:Class rdf:about="http://lila-erc.eu/ontologies/lila/Interjection">
-        <rdfs:label>Interjection</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://lila-erc.eu/ontologies/lila/POS"/>
+        <rdfs:label>Interjection</rdfs:label>
     </owl:Class>
     
 
@@ -552,9 +555,9 @@ De-adjectival adverbs (e.g. &quot;vehementer&quot;) and participles used adjecti
     <!-- http://lila-erc.eu/ontologies/lila/Invariable -->
 
     <owl:Class rdf:about="http://lila-erc.eu/ontologies/lila/Invariable">
-        <rdfs:label>Invariable</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://lila-erc.eu/ontologies/lila/InflectionType"/>
         <rdfs:comment>Class assigned to all parts of speech that are grammatically not inflected (thus, not including those POS&apos;s that are normally inflected, but in some special case are actually not declined or cojugated)</rdfs:comment>
+        <rdfs:label>Invariable</rdfs:label>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://lila-erc.eu/ontologies/lila/UninflectedNoun</rdfs:seeAlso>
     </owl:Class>
     
@@ -636,8 +639,8 @@ De-adjectival adverbs (e.g. &quot;vehementer&quot;) and participles used adjecti
     <!-- http://lila-erc.eu/ontologies/lila/Masculine -->
 
     <owl:Class rdf:about="http://lila-erc.eu/ontologies/lila/Masculine">
-        <rdfs:label>Masculine</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://lila-erc.eu/ontologies/lila/Gender"/>
+        <rdfs:label>Masculine</rdfs:label>
     </owl:Class>
     
 
@@ -657,8 +660,8 @@ For the Morpheme as Lexical Item, see the Ontolex ontology</rdfs:comment>
     <!-- http://lila-erc.eu/ontologies/lila/MorphologicalFeatures -->
 
     <owl:Class rdf:about="http://lila-erc.eu/ontologies/lila/MorphologicalFeatures">
-        <rdfs:label>Morphological Features</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/olia/system.owl#Feature"/>
+        <rdfs:label>Morphological Features</rdfs:label>
     </owl:Class>
     
 
@@ -666,8 +669,8 @@ For the Morpheme as Lexical Item, see the Ontolex ontology</rdfs:comment>
     <!-- http://lila-erc.eu/ontologies/lila/Neuter -->
 
     <owl:Class rdf:about="http://lila-erc.eu/ontologies/lila/Neuter">
-        <rdfs:label>Neuter</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://lila-erc.eu/ontologies/lila/Gender"/>
+        <rdfs:label>Neuter</rdfs:label>
     </owl:Class>
     
 
@@ -724,8 +727,8 @@ For the Morpheme as Lexical Item, see the Ontolex ontology</rdfs:comment>
     <!-- http://lila-erc.eu/ontologies/lila/Numeral -->
 
     <owl:Class rdf:about="http://lila-erc.eu/ontologies/lila/Numeral">
-        <rdfs:label>Numeral</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://lila-erc.eu/ontologies/lila/POS"/>
+        <rdfs:label>Numeral</rdfs:label>
     </owl:Class>
     
 
@@ -733,8 +736,8 @@ For the Morpheme as Lexical Item, see the Ontolex ontology</rdfs:comment>
     <!-- http://lila-erc.eu/ontologies/lila/Other -->
 
     <owl:Class rdf:about="http://lila-erc.eu/ontologies/lila/Other">
-        <rdfs:label>Other</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://lila-erc.eu/ontologies/lila/POS"/>
+        <rdfs:label>Other</rdfs:label>
     </owl:Class>
     
 
@@ -751,8 +754,8 @@ For the Morpheme as Lexical Item, see the Ontolex ontology</rdfs:comment>
     <!-- http://lila-erc.eu/ontologies/lila/Particle -->
 
     <owl:Class rdf:about="http://lila-erc.eu/ontologies/lila/Particle">
-        <rdfs:label>Particle</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://lila-erc.eu/ontologies/lila/POS"/>
+        <rdfs:label>Particle</rdfs:label>
     </owl:Class>
     
 
@@ -760,9 +763,9 @@ For the Morpheme as Lexical Item, see the Ontolex ontology</rdfs:comment>
     <!-- http://lila-erc.eu/ontologies/lila/Perfectum -->
 
     <owl:Class rdf:about="http://lila-erc.eu/ontologies/lila/Perfectum">
-        <rdfs:label>Perfectum</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://lila-erc.eu/ontologies/lila/VerbalInflection"/>
         <rdfs:comment>Verbs that are inflected only in forms of the perfectum tense</rdfs:comment>
+        <rdfs:label>Perfectum</rdfs:label>
     </owl:Class>
     
 
@@ -770,8 +773,8 @@ For the Morpheme as Lexical Item, see the Ontolex ontology</rdfs:comment>
     <!-- http://lila-erc.eu/ontologies/lila/Positive -->
 
     <owl:Class rdf:about="http://lila-erc.eu/ontologies/lila/Positive">
-        <rdfs:label>Positive</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://lila-erc.eu/ontologies/lila/Degree"/>
+        <rdfs:label>Positive</rdfs:label>
     </owl:Class>
     
 
@@ -828,8 +831,8 @@ For the Morpheme as Lexical Item, see the Ontolex ontology</rdfs:comment>
     <!-- http://lila-erc.eu/ontologies/lila/Pronoun -->
 
     <owl:Class rdf:about="http://lila-erc.eu/ontologies/lila/Pronoun">
-        <rdfs:label>Pronoun</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://lila-erc.eu/ontologies/lila/POS"/>
+        <rdfs:label>Pronoun</rdfs:label>
     </owl:Class>
     
 
@@ -846,8 +849,8 @@ For the Morpheme as Lexical Item, see the Ontolex ontology</rdfs:comment>
     <!-- http://lila-erc.eu/ontologies/lila/Punctuation -->
 
     <owl:Class rdf:about="http://lila-erc.eu/ontologies/lila/Punctuation">
-        <rdfs:label>Punctuation</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://lila-erc.eu/ontologies/lila/POS"/>
+        <rdfs:label>Punctuation</rdfs:label>
     </owl:Class>
     
 
@@ -900,8 +903,8 @@ For the Morpheme as Lexical Item, see the Ontolex ontology</rdfs:comment>
     <!-- http://lila-erc.eu/ontologies/lila/Superlative -->
 
     <owl:Class rdf:about="http://lila-erc.eu/ontologies/lila/Superlative">
-        <rdfs:label>Superlative</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://lila-erc.eu/ontologies/lila/Degree"/>
+        <rdfs:label>Superlative</rdfs:label>
     </owl:Class>
     
 
@@ -909,8 +912,8 @@ For the Morpheme as Lexical Item, see the Ontolex ontology</rdfs:comment>
     <!-- http://lila-erc.eu/ontologies/lila/Symbol -->
 
     <owl:Class rdf:about="http://lila-erc.eu/ontologies/lila/Symbol">
-        <rdfs:label>Symbol</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://lila-erc.eu/ontologies/lila/POS"/>
+        <rdfs:label>Symbol</rdfs:label>
     </owl:Class>
     
 
@@ -951,11 +954,20 @@ For the Morpheme as Lexical Item, see the Ontolex ontology</rdfs:comment>
     
 
 
+    <!-- http://lila-erc.eu/ontologies/lila/UninflectedVerb -->
+
+    <owl:Class rdf:about="http://lila-erc.eu/ontologies/lila/UninflectedVerb">
+        <rdfs:subClassOf rdf:resource="http://lila-erc.eu/ontologies/lila/VerbalInflection"/>
+        <rdfs:label>Uninflected Verb</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://lila-erc.eu/ontologies/lila/Verb -->
 
     <owl:Class rdf:about="http://lila-erc.eu/ontologies/lila/Verb">
-        <rdfs:label>Verb</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://lila-erc.eu/ontologies/lila/POS"/>
+        <rdfs:label>Verb</rdfs:label>
     </owl:Class>
     
 
@@ -1566,7 +1578,7 @@ E.g. Verbs must never be inferred as having a nominal inflection</rdfs:comment>
     <!-- http://lila-erc.eu/ontologies/lila/v -->
 
     <owl:NamedIndividual rdf:about="http://lila-erc.eu/ontologies/lila/v">
-        <rdf:type rdf:resource="http://lila-erc.eu/ontologies/lila/VerbalInflection"/>
+        <rdf:type rdf:resource="http://lila-erc.eu/ontologies/lila/UninflectedVerb"/>
         <rdfs:comment>TO BE REVIEWED! In the DB, only a handful of verbs have the cod v, and they seem all to be highly irregular verbs: &quot;cecos (from D), praedotiont, psolocopumai&quot;...)</rdfs:comment>
         <rdfs:label>uninflected verb</rdfs:label>
     </owl:NamedIndividual>
